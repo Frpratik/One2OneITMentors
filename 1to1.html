@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One2One IT Mentors | Personalized IT Career Acceleration</title>
+    
+    <!-- Favicon for Browser Tabs & Search Results -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/companylogo.png"> <!-- Optional: Multiple sizes for better support -->
+    
+    <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc. - Shows Logo in Previews) -->
+    <meta property="og:title" content="One2One IT Mentors | Personalized IT Career Acceleration">
+    <meta property="og:description" content="Personalized one-on-one IT mentorship to master full-stack development and land your dream job.">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg"> <!-- Replace with your site URL + logo path -->
+    <meta property="og:url" content="https://yourdomain.com"> <!-- Your site URL -->
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags (for X/Twitter Previews) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="One2One IT Mentors | Personalized IT Career Acceleration">
+    <meta name="twitter:description" content="Personalized one-on-one IT mentorship to master full-stack development and land your dream job.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg"> <!-- Same as OG image -->
+    
+    <!-- Basic SEO Meta (Optional: Helps Google understand your site) -->
+    <meta name="description" content="One2One IT Mentors offers personalized coaching in Python, Django, React, and more to accelerate your IT career.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f8fafc;
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            --card-bg: rgba(139, 92, 246, 0.08);
+            --card-border: rgba(139, 92, 246, 0.25);
+            --input-bg: rgba(241, 245, 249, 0.8);
+            --input-border: rgba(148, 163, 184, 0.3);
+            --shadow: rgba(6, 182, 212, 0.2);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: rgba(10, 10, 15, 0.85);
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(99, 102, 241, 0.1);
+            --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            --card-bg: rgba(139, 92, 246, 0.05);
+            --card-border: rgba(139, 92, 246, 0.2);
+            --input-bg: rgba(139, 92, 246, 0.05);
+            --input-border: rgba(139, 92, 246, 0.2);
+            --shadow: rgba(6, 182, 212, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #06b6d4;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .theme-toggle .icon {
+            font-size: 16px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .theme-toggle .sun {
+            color: #fbbf24;
+        }
+
+        .theme-toggle .moon {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon {
+            color: #a1a1aa;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow);
+            z-index: 2;
+            left: 4px;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            transform: translateX(28px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            color: var(--text-secondary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .icon1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .icon2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .icon3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+        .icon4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px var(--shadow);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 60px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Coming Soon Banner */
+        .coming-soon {
+            text-align: center;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 2px dashed var(--card-border);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        .coming-soon h3 {
+            font-size: 28px;
+            color: #06b6d4;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #06b6d4;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #8b5cf6;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 30px;
+            padding: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .course-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #06b6d4;
+        }
+
+        .course-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #8b5cf6;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            color: #06b6d4;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* NEW: Team Section Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto 20px;
+            font-weight: 700;
+        }
+
+        .team-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #06b6d4;
+        }
+
+        .team-card .role {
+            color: #8b5cf6;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .team-bio {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .team-cta {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .team-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Tech Stack */
+        .tech-carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-carousel {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+            animation: scroll 30s linear infinite;
+        }
+
+        .tech-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-150px * 9 - 40px * 9)); /* Width of one item * number of items + gap * number of items */
+            }
+        }
+
+        .tech-item {
+            min-width: 150px;
+            height: 150px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.1);
+            border-color: #06b6d4;
+        }
+
+        .tech-logo {
+            font-size: 50px;
+        }
+
+        .tech-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Resources */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .resource-card {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .resource-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #06b6d4;
+        }
+
+        .resource-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .resource-link {
+            color: #06b6d4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 15px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contact Info Styles */
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #06b6d4;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .about-content, .courses-grid, .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid, .resources-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .theme-toggle {
+                width: 56px;
+                height: 28px;
+            }
+
+            .theme-toggle::before {
+                width: 20px;
+                height: 20px;
+                left: 4px;
+            }
+
+            [data-theme="dark"] .theme-toggle::before {
+                transform: translateX(24px);
+            }
+
+            .theme-toggle .icon {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">One2One IT Mentors</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Coaching</a></li>
+                <li><a href="#testimonials">Stories</a></li>
+                <li><a href="#team">Team</a></li> <!-- NEW: Added nav link for Team -->
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <div class="theme-toggle" id="theme-toggle">
+                        <span class="icon sun">☀️</span>
+                        <span class="icon moon">🌙</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-icon icon1">⚛️</div>
+        <div class="floating-icon icon2">🐍</div>
+        <div class="floating-icon icon3">🚀</div>
+        <div class="floating-icon icon4">💻</div>
+        <div class="container hero-content">
+            <h1>Accelerate Your IT Career<br>With One-on-One Mentorship</h1>
+            <p class="tagline">Personalized guidance to master full-stack development and land your dream job</p>
+            <a href="#contact" class="cta-button">Book Your Free Session</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Personalized Mentorship for IT Success</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Dedicated IT Mentor</h3>
+                    <p>With years of experience building scalable systems for tech companies, I provide one-on-one coaching to help you navigate the IT landscape—from coding fundamentals to advanced deployments.</p>
+                    <p>Skip the generic courses. Get tailored advice, real project feedback, and a roadmap designed just for you.</p>
+                    <p>We'll cover everything: APIs, databases, frontends, cloud services, and career strategies to get you hired.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Mentees Guided</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Projects Built</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Years Expertise</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <h2 class="section-title">Mentorship Tracks</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon">🐍</div>
+                    <h3>Python Full Stack</h3>
+                    <p>Master backend and full-stack with Django, FastAPI, and modern tools. Build and deploy secure, scalable apps.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">⚛️</div>
+                    <h3>JavaScript Full Stack</h3>
+                    <p>From React UIs to Node backends: Create dynamic apps with MERN stack and advanced features like TypeScript.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"One2One mentorship transformed my skills—I landed a senior dev role after building a portfolio of real apps."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Arjun Sharma</h4>
+                            <p>Full Stack Dev @ TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Personal feedback on every project helped me scale from junior to leading my own team."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PK</div>
+                        <div class="author-info">
+                            <h4>Priya Kapoor</h4>
+                            <p>Tech Lead @ Innovate Labs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The customized roadmap got me job-ready in months. Best investment for my IT career."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RG</div>
+                        <div class="author-info">
+                            <h4>Rohan Gupta</h4>
+                            <p>Backend Engineer @ Startup Inc</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Team Section (Inserted here, after Testimonials, before Tech Stack) -->
+    <!-- You can add more team members by duplicating the .team-card div below -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <!-- Founder Card - Replace the .team-avatar background/image with your photo URL or keep icon as placeholder -->
+                <div class="team-card">
+                <div class="team-avatar"><img src="images/pratik.png" alt="Pratik Ghuge" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>                    <h3>Pratik Ghuge</h3>
+                    <div class="role">Founder & Lead Mentor</div>
+                    <p class="team-bio">Passionate Full Stack Developer with expertise in building scalable web applications using Python, Django, and FastAPI. With 2+ years of experience at NeenOpal Inc. and MobiTrail, I've mentored teams, contributed to open-source projects (Top 20 in SWOC), and developed real-world systems like AI-powered stock trackers and multi-tenant SaaS platforms. Committed to empowering aspiring IT professionals through hands-on, personalized guidance.</p>
+                </div>
+            </div>
+            <!-- NEW: Simple Team Join Div -->
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: var(--card-bg); border-radius: 20px; border: 1px solid var(--card-border);">
+                <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 600px; margin: 0 auto 20px;">If you want to become part of the team, you can connect with me!</p>
+                <a href="#contact" class="team-cta">Connect Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech">
+        <div class="container">
+            <h2 class="section-title">Core Technologies</h2>
+            <div class="tech-carousel-container">
+                <div class="tech-carousel">
+                    <div class="tech-item">
+                        <div class="tech-logo">⚛️</div>
+                        <div class="tech-name">React</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🟢</div>
+                        <div class="tech-name">Node.js</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐍</div>
+                        <div class="tech-name">Django</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">⚡</div>
+                        <div class="tech-name">FastAPI</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🍃</div>
+                        <div class="tech-name">MongoDB</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐘</div>
+                        <div class="tech-name">PostgreSQL</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐳</div>
+                        <div class="tech-name">Docker</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🔧</div>
+                        <div class="tech-name">Git</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">☁️</div>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                    <!-- Duplicate items for seamless loop -->
+                    <div class="tech-item">
+                        <div class="tech-logo">⚛️</div>
+                        <div class="tech-name">React</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🟢</div>
+                        <div class="tech-name">Node.js</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐍</div>
+                        <div class="tech-name">Django</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">⚡</div>
+                        <div class="tech-name">FastAPI</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🍃</div>
+                        <div class="tech-name">MongoDB</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐘</div>
+                        <div class="tech-name">PostgreSQL</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🐳</div>
+                        <div class="tech-name">Docker</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">🔧</div>
+                        <div class="tech-name">Git</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">☁️</div>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Free Resources</h2>
+            <div class="coming-soon">
+                <h3>Coming Soon!</h3>
+                <p>Exciting free tools, guides, and tips are on the way to kickstart your IT journey.</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>IT Roadmaps</h3>
+                    <p>Step-by-step guides to IT roles in 2025</p>
+                    <a href="#" class="resource-link">Download PDF →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">🎥</div>
+                    <h3>Tutorial Videos</h3>
+                    <p>Crash courses on key IT skills and tools</p>
+                    <a href="#" class="resource-link">Watch Now →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">💡</div>
+                    <h3>Weekly Insights</h3>
+                    <p>Tips, trends, and advice straight to your inbox</p>
+                    <a href="#" class="resource-link">Subscribe →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Start Your Journey</h2>
+            <div class="contact-content">
+                <div>
+                    <h3 style="font-size: 32px; margin-bottom: 20px; color: #06b6d4;">One-on-One Guidance Awaits</h3>
+                    <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">Schedule a free discovery call to map out your IT career path.</p>
+                    
+                    <!-- New Contact Info -->
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+91-9372926289">+91-9372926289</a> 
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:contact@one2oneitmentors.com">contact@one2oneitmentors.com</a> <!-- Replace with your email -->
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="mailto:contact@one2oneitmentors.com" class="social-link" title="Email">📧</a>
+                        <a href="https://www.linkedin.com/company/one2one-it-mentors" class="social-link" title="LinkedIn" target="_blank">💼</a>
+                        <a href="tel:+919372926289" class="social-link" title="Call" target="_blank">📞</a>
+                    </div>
+                </div>
+                <form class="contact-form" action="#" method="POST"> <!-- Add action="https://formspree.io/your-endpoint" for real sending -->
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Share your goals and experience... (Note: Form needs backend for sending)"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Get Started</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 One2One IT Mentors. Empowering IT professionals, one mentee at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Load saved theme or default to light
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
+        }
+
+        // Toggle function
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
