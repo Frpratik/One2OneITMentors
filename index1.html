@@ -7,22 +7,22 @@
     
     <!-- Favicon for Browser Tabs & Search Results -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/companylogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/companylogo.png"> <!-- Optional: Multiple sizes for better support -->
     
-    <!-- Open Graph Meta Tags -->
+    <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc. - Shows Logo in Previews) -->
     <meta property="og:title" content="One2One IT Mentors | Personalized IT Career Acceleration">
     <meta property="og:description" content="Personalized one-on-one IT mentorship to master full-stack development and land your dream job.">
-    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
-    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg"> <!-- Replace with your site URL + logo path -->
+    <meta property="og:url" content="https://yourdomain.com"> <!-- Your site URL -->
     <meta property="og:type" content="website">
     
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card Meta Tags (for X/Twitter Previews) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="One2One IT Mentors | Personalized IT Career Acceleration">
     <meta name="twitter:description" content="Personalized one-on-one IT mentorship to master full-stack development and land your dream job.">
-    <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg">
+    <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg"> <!-- Same as OG image -->
     
-    <!-- Basic SEO Meta -->
+    <!-- Basic SEO Meta (Optional: Helps Google understand your site) -->
     <meta name="description" content="One2One IT Mentors offers personalized coaching in Python, Django, React, and more to accelerate your IT career.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -123,86 +123,6 @@
 
         .nav-links a:hover {
             color: #06b6d4;
-        }
-
-        /* Hamburger Menu Button - Hidden by default on desktop */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Mobile Menu - Hidden by default */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: var(--bg-secondary);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            z-index: 999;
-        }
-
-        .mobile-menu.active {
-            max-height: 500px;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 20px;
-        }
-
-        .mobile-menu ul li {
-            border-bottom: 1px solid var(--border);
-        }
-
-        .mobile-menu ul li:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-menu ul li a {
-            display: block;
-            padding: 15px 10px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .mobile-menu ul li a:hover {
-            color: #06b6d4;
-            padding-left: 20px;
         }
 
         /* Theme Toggle Button */
@@ -521,7 +441,7 @@
             color: var(--text-muted);
         }
 
-        /* Team Section Styles */
+        /* NEW: Team Section Styles */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -611,7 +531,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-150px * 9 - 40px * 9));
+                transform: translateX(calc(-150px * 9 - 40px * 9)); /* Width of one item * number of items + gap * number of items */
             }
         }
 
@@ -776,36 +696,10 @@
             color: var(--text-muted);
         }
 
-        /* ============================================ */
-        /* MOBILE RESPONSIVE STYLES */
-        /* ============================================ */
-
+        /* Responsive */
         @media (max-width: 768px) {
-            /* Show hamburger, hide desktop nav links, show mobile menu */
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links li:not(:last-child) {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            /* Adjust logo size on mobile */
-            .logo {
-                font-size: 18px;
-            }
-
-            /* Make other sections responsive */
             .hero h1 {
                 font-size: 42px;
-            }
-
-            .hero .tagline {
-                font-size: 18px;
             }
 
             .about-content, .courses-grid, .contact-content {
@@ -818,6 +712,10 @@
 
             .stats {
                 grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
             }
 
             .theme-toggle {
@@ -838,36 +736,6 @@
             .theme-toggle .icon {
                 font-size: 14px;
             }
-
-            section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .course-card, .testimonial-card, .resource-card, .team-card {
-                padding: 30px;
-            }
-
-            .contact-content h3 {
-                font-size: 24px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .logo {
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -880,7 +748,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#courses">Coaching</a></li>
                 <li><a href="#testimonials">Stories</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#team">Team</a></li> <!-- NEW: Added nav link for Team -->
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
@@ -890,26 +758,8 @@
                     </div>
                 </li>
             </ul>
-            <!-- Hamburger Menu Button (visible only on mobile) -->
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
-
-    <!-- Mobile Menu (visible only on mobile when hamburger is clicked) -->
-    <div class="mobile-menu" id="mobile-menu">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#courses">Coaching</a></li>
-            <li><a href="#testimonials">Stories</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1027,18 +877,20 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- NEW: Team Section (Inserted here, after Testimonials, before Tech Stack) -->
+    <!-- You can add more team members by duplicating the .team-card div below -->
     <section id="team">
         <div class="container">
             <h2 class="section-title">Our Team</h2>
             <div class="team-grid">
+                <!-- Founder Card - Replace the .team-avatar background/image with your photo URL or keep icon as placeholder -->
                 <div class="team-card">
-                    <div class="team-avatar"><img src="images/pratik.png" alt="Pratik Ghuge" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
-                    <h3>Pratik Ghuge</h3>
+                <div class="team-avatar"><img src="images/pratik.png" alt="Pratik Ghuge" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>                    <h3>Pratik Ghuge</h3>
                     <div class="role">Founder & Lead Mentor</div>
                     <p class="team-bio">Passionate Full Stack Developer with expertise in building scalable web applications using Python, Django, and FastAPI. With 2+ years of experience at NeenOpal Inc. and MobiTrail, I've mentored teams, contributed to open-source projects (Top 20 in SWOC), and developed real-world systems like AI-powered stock trackers and multi-tenant SaaS platforms. Committed to empowering aspiring IT professionals through hands-on, personalized guidance.</p>
                 </div>
             </div>
+            <!-- NEW: Simple Team Join Div -->
             <div style="text-align: center; margin-top: 60px; padding: 40px; background: var(--card-bg); border-radius: 20px; border: 1px solid var(--card-border);">
                 <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 600px; margin: 0 auto 20px;">If you want to become part of the team, you can connect with me!</p>
                 <a href="#contact" class="team-cta">Connect Now</a>
@@ -1115,7 +967,7 @@
                     </div>
                     <div class="tech-item">
                         <div class="tech-logo">🐳</div>
-                        <div class="tech-logo">Docker</div>
+                        <div class="tech-name">Docker</div>
                     </div>
                     <div class="tech-item">
                         <div class="tech-logo">🔧</div>
@@ -1170,24 +1022,25 @@
                     <h3 style="font-size: 32px; margin-bottom: 20px; color: #06b6d4;">One-on-One Guidance Awaits</h3>
                     <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">Schedule a free discovery call to map out your IT career path.</p>
                     
+                    <!-- New Contact Info -->
                     <div class="contact-info">
                         <div class="contact-item">
                             <span class="contact-icon">📞</span>
-                            <a href="tel:+91-9372926289">+91-9372926289</a>
+                            <a href="tel:+91-9372926289">+91-9372926289</a> 
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">📧</span>
-                            <a href="mailto:onetooneitmentors@gmail.com">onetooneitmentors@gmail.com</a>
+                            <a href="mailto:onetooneitmentors@gmail.com">onetooneitmentors@gmail.com</a> <!-- Replace with your email -->
                         </div>
                     </div>
 
                     <div class="social-links">
                         <a href="mailto:onetooneitmentors@gmail.com" class="social-link" title="Email">📧</a>
                         <a href="https://www.linkedin.com/company/one2one-it-mentors" class="social-link" title="LinkedIn" target="_blank">💼</a>
-                        <a href="tel:+919372926289" class="social-link" title="Call">📞</a>
+                        <a href="tel:+919372926289" class="social-link" title="Call" target="_blank">📞</a>
                     </div>
                 </div>
-                <form class="contact-form" action="#" method="POST">
+                <form class="contact-form" action="#" method="POST"> <!-- Add action="https://formspree.io/your-endpoint" for real sending -->
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" required>
                     </div>
@@ -1195,7 +1048,7 @@
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Share your goals and experience..."></textarea>
+                        <textarea placeholder="Share your goals and experience... (Note: Form needs backend for sending)"></textarea>
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Get Started</button>
                 </form>
@@ -1205,7 +1058,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 One2One IT Mentors. Empowering IT professionals, one mentee at a time.</p>
+            <p>&copy; 2025 One2One IT Mentors. Empowering IT professionals, one mentee at a time.</p>
         </div>
     </footer>
 
@@ -1228,24 +1081,6 @@
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-        });
-
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        const mobileLinks = document.querySelectorAll('.mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
         });
 
         // Smooth scrolling
