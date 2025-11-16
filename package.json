@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "resend": "^4.0.0"
-  },
-  "scripts": {
-    "dev": "vercel dev"
+    "nodemailer": "^6.9.15"
   }
 }
