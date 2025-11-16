@@ -23,8 +23,8 @@ export default async function handler(req, res) {
     return res.end(JSON.stringify({ error: 'Missing fields' }));
   }
 
-  // Create transporter with Gmail SMTP
-  const transporter = nodemailer.createTransporter({
+  // Create transporter with Gmail SMTP (FIXED: createTransport, not createTransporter)
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,     // onetooneitmentors@gmail.com
