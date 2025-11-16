@@ -319,6 +319,8 @@
             font-size: 18px;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 10px 40px var(--shadow);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -471,54 +473,149 @@
             color: #8b5cf6;
         }
 
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+        /* ========================== */
+        /* TESTIMONIALS (UPDATED)    */
+        /* ========================== */
+
+        .testimonials-section {
+            position: relative;
+            padding-top: 80px;
+            padding-bottom: 80px;
         }
 
-        .testimonial-card {
+        .testimonials-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            flex: 1;
+            max-width: 700px;
+            border-radius: 24px;
+            overflow: hidden;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 40px;
+            box-shadow: 0 16px 40px var(--shadow);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.45s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 32px 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .testimonial-text {
-            font-style: italic;
+            position: relative;
+            font-style: normal;
             color: var(--text-primary);
-            line-height: 1.8;
-            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 17px;
+            max-width: 100%;
+            padding-left: 40px;
+        }
+
+        .testimonial-text::before {
+            content: "“";
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 40px;
+            line-height: 1;
+            color: #06b6d4;
+            opacity: 0.7;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            margin-top: 10px;
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: var(--accent-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 22px;
             color: white;
+            flex-shrink: 0;
         }
 
         .author-info h4 {
             font-size: 16px;
             color: #06b6d4;
+            margin-bottom: 2px;
         }
 
         .author-info p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
+        }
+
+        .nav-btn {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            border-color: #06b6d4;
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .dot.active {
+            background: #06b6d4;
+            transform: scale(1.15);
         }
 
         /* Team Section Styles */
@@ -554,6 +651,7 @@
             color: white;
             margin: 0 auto 20px;
             font-weight: 700;
+            overflow: hidden;
         }
 
         .team-card h3 {
@@ -741,7 +839,6 @@
             transform: scale(1.1);
         }
 
-        /* Contact Info Styles */
         .contact-info {
             margin-top: 30px;
         }
@@ -781,7 +878,6 @@
         /* ============================================ */
 
         @media (max-width: 768px) {
-            /* Show hamburger, hide desktop nav links, show mobile menu */
             .hamburger {
                 display: flex;
             }
@@ -794,12 +890,10 @@
                 display: block;
             }
 
-            /* Adjust logo size on mobile */
             .logo {
                 font-size: 18px;
             }
 
-            /* Make other sections responsive */
             .hero h1 {
                 font-size: 42px;
             }
@@ -812,12 +906,21 @@
                 grid-template-columns: 1fr;
             }
 
-            .testimonials-grid, .resources-grid, .team-grid {
+            .stats {
                 grid-template-columns: 1fr;
             }
 
-            .stats {
-                grid-template-columns: 1fr;
+            .testimonials-wrapper {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-btn {
+                order: -1;
+            }
+
+            .testimonials-carousel {
+                max-width: 100%;
             }
 
             .theme-toggle {
@@ -847,12 +950,24 @@
                 font-size: 32px;
             }
 
-            .course-card, .testimonial-card, .resource-card, .team-card {
+            .course-card, .resource-card, .team-card {
                 padding: 30px;
             }
 
             .contact-content h3 {
                 font-size: 24px !important;
+            }
+
+            .testimonial-slide {
+                padding: 28px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 16px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -867,6 +982,10 @@
 
             .logo {
                 font-size: 16px;
+            }
+
+            .testimonial-slide {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -884,13 +1003,12 @@
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <div class="theme-toggle" id="theme-toggle">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" type="button">
                         <span class="icon sun">☀️</span>
                         <span class="icon moon">🌙</span>
-                    </div>
+                    </button>
                 </li>
             </ul>
-            <!-- Hamburger Menu Button (visible only on mobile) -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -899,7 +1017,7 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu (visible only on mobile when hamburger is clicked) -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <ul>
             <li><a href="#about">About</a></li>
@@ -988,42 +1106,24 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
+    <!-- Testimonials Section (Updated) -->
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
             <h2 class="section-title">Success Stories</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"One2One mentorship transformed my skills—I landed a senior dev role after building a portfolio of real apps."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AS</div>
-                        <div class="author-info">
-                            <h4>Arjun Sharma</h4>
-                            <p>Full Stack Dev @ TechCorp</p>
-                        </div>
+
+            <div class="testimonials-wrapper">
+                <button class="nav-btn prev" id="prevBtn" aria-label="Previous testimonial">‹</button>
+
+                <div class="testimonials-carousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Slides will be populated by JS -->
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Personal feedback on every project helped me scale from junior to leading my own team."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PK</div>
-                        <div class="author-info">
-                            <h4>Priya Kapoor</h4>
-                            <p>Tech Lead @ Innovate Labs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The customized roadmap got me job-ready in months. Best investment for my IT career."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RG</div>
-                        <div class="author-info">
-                            <h4>Rohan Gupta</h4>
-                            <p>Backend Engineer @ Startup Inc</p>
-                        </div>
-                    </div>
-                </div>
+
+                <button class="nav-btn next" id="nextBtn" aria-label="Next testimonial">›</button>
             </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
@@ -1033,7 +1133,9 @@
             <h2 class="section-title">Our Team</h2>
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-avatar"><img src="images/pratik.png" alt="Pratik Ghuge" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
+                    <div class="team-avatar">
+                        <img src="images/pratik.png" alt="Portrait of mentor Pratik Ghuge" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
                     <h3>Pratik Ghuge</h3>
                     <div class="role">Founder & Lead Mentor</div>
                     <p class="team-bio">Passionate Full Stack Developer with expertise in building scalable web applications using Python, Django, and FastAPI. With 2+ years of experience at NeenOpal Inc. and MobiTrail, I've mentored teams, contributed to open-source projects (Top 20 in SWOC), and developed real-world systems like AI-powered stock trackers and multi-tenant SaaS platforms. Committed to empowering aspiring IT professionals through hands-on, personalized guidance.</p>
@@ -1115,7 +1217,7 @@
                     </div>
                     <div class="tech-item">
                         <div class="tech-logo">🐳</div>
-                        <div class="tech-logo">Docker</div>
+                        <div class="tech-name">Docker</div>
                     </div>
                     <div class="tech-item">
                         <div class="tech-logo">🔧</div>
@@ -1187,18 +1289,18 @@
                         <a href="tel:+919372926289" class="social-link" title="Call">📞</a>
                     </div>
                 </div>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Share your goals..." required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button" style="width:100%;">Send Message</button>
-                    </form>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Share your goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width:100%;">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1210,7 +1312,7 @@
     </footer>
 
     <script>
-
+        // Contact Form Script
         document.getElementById('contactForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
@@ -1225,16 +1327,16 @@
 
             try {
                 const res = await fetch('https://one2-one-it-mentors.vercel.app/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
 
                 if (res.ok) {
-                alert('Message sent! We\'ll reply soon.');
-                e.target.reset();
+                    alert('Message sent! We\'ll reply soon.');
+                    e.target.reset();
                 } else {
-                throw new Error('Failed');
+                    throw new Error('Failed');
                 }
             } catch (err) {
                 alert('Error. Try again or email directly.');
@@ -1242,9 +1344,177 @@
                 btn.disabled = false;
                 btn.textContent = 'Send Message';
             }
-            };
+        };
 
+        // ==============================
+        // Testimonials Carousel Data
+        // ==============================
+        const testimonials = [
+            {
+                text: "I’m very satisfied with my learning experience with you. I really liked your teaching method and how you explained concepts in a way that was easy to understand.",
+                author: "Alakar C Harijan",
+                affiliation: "ISS SHIPPING INDIA",
+                avatar: "AH"
+            },
+            {
+                text: "My learning experience with you was good. The thing I liked the most was how your guidance boosted my IT career quickly with great mentorship.",
+                author: "Sunanda Sahoo",
+                affiliation: "Utkal University",
+                avatar: "SS"
+            },
+            {
+                text: "My overall experience learning from you was excellent. I especially liked the revision every day, which helped me understand and remember the topics better.",
+                author: "Vighney Vinod Adurkar",
+                affiliation: "Indala College of Engineering",
+                avatar: "VA"
+            },
+            {
+                text: "For freshers, the learning experience with you is simply the best. I really liked your friendly teaching style, which made it comfortable to ask doubts and stay engaged in the sessions.",
+                author: "Krishnaraj Chauhan",
+                affiliation: "GNIMS",
+                avatar: "KC"
+            },
+            {
+                text: "The one-on-one sessions were a game-changer for me. Pratik's practical approach and real-world examples made complex topics click, helping me build a strong portfolio in just weeks.",
+                author: "Priya Reddy",
+                affiliation: "PES University, Bangalore",
+                avatar: "PR"
+            },
+            {
+                text: "What stood out was the constant encouragement and doubt-clearing. It felt like having a personal coach who truly cares about your growth – highly recommend for any IT aspirant!",
+                author: "Rajesh Kumar",
+                affiliation: "RV College of Engineering, Bangalore",
+                avatar: "RK"
+            },
+            {
+                text: "From basics to advanced deployment, the mentorship was tailored perfectly to my pace. The daily revisions solidified my knowledge, and I'm now confident in full-stack development.",
+                author: "Sneha Patel",
+                affiliation: "Christ University, Bangalore",
+                avatar: "SP"
+            }
+        ];
+
+        // ==============================
+        // Carousel Setup
+        // ==============================
+        const carouselTrack = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carouselDots = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        const totalSlides = testimonials.length;
+
+        // Populate Slides
+        testimonials.forEach(testimonial => {
+            const slide = document.createElement('div');
+            slide.className = 'testimonial-slide';
+            slide.innerHTML = `
+                <p class="testimonial-text">${testimonial.text}</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">${testimonial.avatar}</div>
+                    <div class="author-info">
+                        <h4>${testimonial.author}</h4>
+                        <p>${testimonial.affiliation}</p>
+                    </div>
+                </div>
+            `;
+            carouselTrack.appendChild(slide);
+        });
+
+        // Create Dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoPlay();
+            });
+            if (i === 0) dot.classList.add('active');
+            carouselDots.appendChild(dot);
+        }
+
+        // Update Transform
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+            const dots = carouselDots.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // ==============================
+        // Auto-play (every 4 seconds)
+        // ==============================
+        let autoPlayInterval = setInterval(nextSlide, 4000);
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(nextSlide, 4000);
+        }
+
+        // Button Events
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+
+        // Touch/Swipe Support
+        let startX = 0;
+        let endX = 0;
+        carouselTrack.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        });
+        carouselTrack.addEventListener('touchend', e => {
+            endX = e.changedTouches[0].clientX;
+            const deltaX = startX - endX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                resetAutoPlay();
+            }
+        });
+
+        // Keyboard Support
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetAutoPlay();
+            }
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetAutoPlay();
+            }
+        });
+
+        // Initial Carousel Update
+        updateCarousel();
+
+        // ==============================
         // Theme Toggle Logic
+        // ==============================
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
@@ -1264,7 +1534,9 @@
             localStorage.setItem('theme', newTheme);
         });
 
+        // ==============================
         // Hamburger Menu Toggle
+        // ==============================
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1282,9 +1554,12 @@
             });
         });
 
+        // ==============================
         // Smooth scrolling
+        // ==============================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                // allow normal behavior for links inside mobile menu toggle process
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1293,5 +1568,6 @@
             });
         });
     </script>
+
 </body>
 </html>
