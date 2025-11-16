@@ -108,7 +108,7 @@ export default async function handler(req, res) {
           <p>Hi <strong>${name}</strong>,</p>
           <p>Thanks for reaching out to One2One IT Mentors! Your inquiry has been received, and I'll personally review it to provide tailored guidance for your IT career acceleration.</p>
           <p>Expect a response within 24-48 hours – let's get you on the path to your dream role! 🚀</p>
-          <a href="https://your-github-pages-url.com" class="cta">Visit Our Site</a>
+          <a href="https://frpratik.github.io/One2OneITMentors/" class="cta">Visit Our Site</a>
           <p style="font-size: 14px; color: #64748b; margin-top: 30px;">In the meantime, check out our free resources to kickstart your journey.</p>
         </div>
         <div class="footer">
